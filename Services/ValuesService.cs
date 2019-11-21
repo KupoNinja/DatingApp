@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DatingApp.API.Data;
 using DatingApp.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Services
 {
@@ -9,10 +12,18 @@ namespace DatingApp.API.Services
     {
         private readonly DataContext _db;
 
-        public List<Value> GetAll()
+        public async Task<List<Value>> GetAll()
         {
-            var values = _db.Values.ToList();
+            var values = await _db.Values.ToListAsync();
+
             return values;
+        }
+
+        public async Task<Value> GetById(int id)
+        {
+            var value = await _db.Values.FirstOrDefaultAsync(v => v.Id == id);
+
+            return value;
         }
 
         public ValuesService(DataContext db)
