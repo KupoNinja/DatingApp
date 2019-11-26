@@ -14,10 +14,12 @@ namespace DatingApp.API.Controllers
         private readonly ValuesService _vs;
         // GET api/values
         [HttpGet]
-        public IActionResult GetValues()
+        public async Task<IActionResult> GetValues()
         {
+            //NOTE Broken here... Need to fix and understand async await better
             try
             {
+                // var values = await _vs.GetAll();
                 return Ok(_vs.GetAll());
             }
             catch (Exception e)
