@@ -11,16 +11,14 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly ValuesService _vs;
+        private readonly ValuesRepository _vr;
         // GET api/values
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
-            //NOTE Broken here... Need to fix and understand async await better
             try
             {
-                // var values = await _vs.GetAll();
-                return Ok(_vs.GetAll());
+                return Ok(await _vr.GetAll());
             }
             catch (Exception e)
             {
@@ -34,7 +32,7 @@ namespace DatingApp.API.Controllers
         {
             try
             {
-                return Ok(_vs.GetById(id));
+                return Ok(_vr.GetById(id));
             }
             catch (Exception e)
             {
@@ -60,9 +58,9 @@ namespace DatingApp.API.Controllers
         {
         }
 
-        public ValuesController(ValuesService vs)
+        public ValuesController(ValuesRepository vr)
         {
-            _vs = vs;
+            _vr = vr;
         }
     }
 }

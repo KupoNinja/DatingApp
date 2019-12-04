@@ -31,7 +31,7 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))); ;
             services.AddControllers();
 
-            services.AddTransient<ValuesService>();
+            services.AddTransient<ValuesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
