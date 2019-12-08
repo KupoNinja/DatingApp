@@ -30,6 +30,7 @@ namespace DatingApp.API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))); ;
             services.AddControllers();
+            services.AddCors();
 
             services.AddTransient<ValuesRepository>();
         }
@@ -45,6 +46,10 @@ namespace DatingApp.API
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Looks like lax security but OK for development.
+            // NOTE Change this before publishing.
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 
