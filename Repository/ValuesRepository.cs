@@ -8,10 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Services
 {
-    //TODO Change this to Repository. This is talking to a DB so it's a Repository.
     public class ValuesRepository
     {
-        private readonly DataContext _db;
+        private readonly DatingAppContext _db;
 
         public async Task<List<Value>> GetAll()
         {
@@ -27,7 +26,7 @@ namespace DatingApp.API.Services
             return value;
         }
 
-        public ValuesRepository(DataContext db)
+        public ValuesRepository(DatingAppContext db)
         {
             _db = db;
         }

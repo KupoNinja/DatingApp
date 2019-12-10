@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Data
 {
-    public class DataContext : DbContext
+    public class DatingAppContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DatingAppContext(DbContextOptions<DatingAppContext> options) : base(options) { }
 
         public DbSet<Value> Values { get; set; }
     }
