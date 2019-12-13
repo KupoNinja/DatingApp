@@ -11,6 +11,11 @@ namespace DatingApp.API.Repository
     {
         private readonly DatingAppContext _context;
 
+        public AuthRepository(DatingAppContext context)
+        {
+            _context = context;
+        }
+
         public async Task<User> Login(string username, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
@@ -63,11 +68,6 @@ namespace DatingApp.API.Repository
                 return true;
 
             return false;
-        }
-
-        public AuthRepository(DatingAppContext context)
-        {
-            _context = context;
         }
     }
 }
