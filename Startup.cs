@@ -48,6 +48,8 @@ namespace DatingApp.API
             services.AddCors();
 
             services.AddTransient<ValuesRepository>();
+
+            services.AddTransient<IAuthService, AuthService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
