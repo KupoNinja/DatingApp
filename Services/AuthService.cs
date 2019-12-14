@@ -26,7 +26,7 @@ namespace DatingApp.API.Services
             var userToCreate = new User
             {
                 UserId = Guid.NewGuid().ToString(),
-                UserName = userForRegisterDto.Username
+                Username = userForRegisterDto.Username
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
