@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using DatingApp.API.Dtos;
 using DatingApp.API.Interfaces;
 using DatingApp.API.Models;
 using DatingApp.API.Repository;
@@ -19,16 +20,13 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             try
             {
-                var userToCreate = new User
-                {
-                    UserName = username
-                };
+                var createdUser = await _ase.Register(userForRegisterDto);
 
-                return Ok(await _ase.Register(userToCreate, password));
+                return Created("api/auth/" + createdUser.UserId, createdUser);
             }
             catch (Exception e)
             {

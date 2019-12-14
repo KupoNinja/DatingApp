@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
+using DatingApp.API.Dtos;
 using DatingApp.API.Models;
 
 namespace DatingApp.API.Interfaces
 {
     public interface IAuthService
     {
-        Task<User> Register(User user, string password);
+        Task<User> Register(UserForRegisterDto userForRegisterDto);
         Task<User> Login(string username, string password);
     }
 }
