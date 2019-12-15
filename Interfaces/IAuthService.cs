@@ -7,6 +7,6 @@ namespace DatingApp.API.Interfaces
     public interface IAuthService
     {
         Task<User> Register(UserForRegisterDto userForRegisterDto);
-        Task<User> Login(string username, string password);
+        Task<object> Login(UserForLoginDto userForLoginDto);
     }
 }

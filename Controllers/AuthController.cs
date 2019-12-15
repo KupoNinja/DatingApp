@@ -33,5 +33,22 @@ namespace DatingApp.API.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        {
+            try
+            {
+                var token = await _ase.Login(userForLoginDto);
+                if (token == null)
+                    return Unauthorized();
+
+                return Ok(token);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
