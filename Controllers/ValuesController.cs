@@ -31,11 +31,11 @@ namespace DatingApp.API.Controllers
 
         [AllowAnonymous]
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             try
             {
-                return Ok(_vr.GetById(id));
+                return Ok(await _vr.GetById(id));
             }
             catch (Exception e)
             {
