@@ -15,7 +15,7 @@ namespace DatingApp.API.Controllers
     {
         private readonly ValuesRepository _vr;
 
-        // GET api/values
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
