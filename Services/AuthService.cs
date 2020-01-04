@@ -28,7 +28,7 @@ namespace DatingApp.API.Services
             // Validate request
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             if (await _repo.UserExists(userForRegisterDto.Username))
-                throw new Exception("User already exists");
+                throw new Exception("Username already exists");
 
             var userToCreate = new User
             {
